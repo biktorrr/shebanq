@@ -1,30 +1,88 @@
-@prefix    rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix     rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix     rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix   sq: <http://purl.org/collections/shebanq/> .
-@prefix   oa: <http://www.w3.org/ns/oa#>.
-@prefix      skos: <http://www.w3.org/2004/02/skos/core#> .
-@prefix      foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix     owl: <http://www.w3.org/2002/07/owl#> .
+@prefix   	sq: <http://purl.org/collections/shebanq/> .
+
+@prefix   	oa: <http://www.w3.org/ns/oa#>.
+@prefix     skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix     foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix       dc: <http://purl.org/dc/terms/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
 
 
-#Schema
-sq:Query rdfs:subClassOf oa:Annotation.
-sq:Researcher rdfs:subClassOf foaf:Person.
-sq:has_intension rdfs:subPropertyOf oa:hasBody.
-sq:has_extension rdfs:subPropertyOf oa:hasTarget.
-# sq:has_researcher 
-# sq:made_query rdfs:subPropertyOf .
 
-#Data
+##########################################################################
+#                           Data										 #
+##########################################################################
+
 
 sq:researcher1 
 	a sq:Researcher;
 	foaf:name "Dirk Roorda";
-	sq:made_query sq:query1.
+	foaf:mbox "mailto:dirk.roorda@dans.knaw.nl";
+	sq:has_organisation sq:org_dans.
+
+	
+sq:researcher2 
+	a sq:Researcher;
+	foaf:name "Janet Dyk";
+	sq:has_organisation sq:org_wivu..
+	
+	
+sq:org_dans
+	a foaf:Organization;
+	foaf:name "DANS";
+	foaf:homepage <http://dans.knaw.nl>;
+	foaf:member sq:researcher1.
+	
+sq:org_wivu
+	a foaf:Organization;
+	foaf:name "WIVU";
+	foaf:member sq:researcher2.
+	
+sq:project1
+	a foaf:Project;
+	foaf:homepage <http://www.dans.knaw.nl/en/node/2464>.
+
+sq:project2
+	a foaf:Project;
+	foaf:name "Valency".
 	
 sq:query1
 	a sq:Query;
-	sq:has_intension "select all * where @prefix is [myword]";
-	sq:has_extension <http://shebanqserver.nl/word?w=12,3>;
-	sq:has_researcher sq:researcher1.
+	sq:has_intension "select all * where @prefix is [myword]"; 
+	sq:has_extension <http://linked.ancient-data.org/shebanq/word?w=12,3>;
+	sq:has_extension <http://linked.ancient-data.org/shebanq/word?w=14,8,4>;
+	sq:has_researcher sq:researcher1;
+	sq:has_project sq:project1;
+	sq:has_research_question "Can plurals ...?";
+	sq:version_of_data "BHS3";
+	sq:version_of_emdros "3.4.1";
+	sq:version_of_shebanq "1.0";
+	sq:date_last_run "2014-06-03T14:11:00CET";
+	sq:date_published "2014-06-03T14:11:00CET". # make sure this complies with xsd:dateTime
 
-	
+sq:query2
+	a sq:Query;
+	sq:has_intension '''SELECT ALL OBJECTS
+			WHERE
+			[Clause
+			  [Phrase phrase_function = PreO OR phrase_function = PtcO
+				 [Word FOCUS part_of_speech = verb AND lexeme = "FJM["]
+			  ]
+			  ..
+			  [Phrase FOCUS phrase_function = Objc OR phrase_function = IrpO]
+			]
+			GO'''; 
+	sq:has_extension <http://linked.ancient-data.org/shebanq/word?w=100,102>;
+	sq:has_extension <http://linked.ancient-data.org/shebanq/word?w=13,4>;
+	sq:has_extension <http://linked.ancient-data.org/shebanq/word?w=0,1>;
+	sq:has_extension <http://linked.ancient-data.org/shebanq/word?w=14,8,4>;
+	sq:has_researcher sq:researcher2;
+	sq:has_research_question "Can the verb שִׂים with have a double object?";
+	sq:description "This finds instances of the verb "שִׂים" (to put) with double object both in Hebrew and Aramaic, where one of the objects is encoded as a suffix on the verb, which may be a participle.";
+	sq:version_of_data "BHS3";
+	sq:version_of_emdros "3.4.1";
+	sq:version_of_shebanq "1.0";
+	sq:date_last_run "2012-01-27T14:00:00CET";
+	sq:date_published "2014-06-03T14:11:00CET". # make sure this complies with xsd:dateTime

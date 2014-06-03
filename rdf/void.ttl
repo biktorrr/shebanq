@@ -20,6 +20,7 @@ a void:Dataset ;
 owl:versionInfo "0.1" ;
                 void:dataDump
                 <oa.ttl>,
-                <shebanq_data.ttl>.
+                <shebanq_data.ttl>,
+                <shebanq_schema.ttl>.
 
 
