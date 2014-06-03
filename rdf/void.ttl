@@ -7,7 +7,7 @@
 @prefix      xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix       dc: <http://purl.org/dc/terms/> .
 
-@prefix  sq:: <http://purl.org/collections/nl/shebanq/> .
+@prefix  sq: <http://purl.org/collections/nl/shebanq/> .
 @prefix oa: <http://www.w3.org/ns/oa#> .
 
 
@@ -15,7 +15,7 @@
 <shebanq>
 a void:Dataset ;
 		a lib:CloudNode ;
-        lib:source dss: ;
+        lib:source sq: ;
         dc:title "Shebanq Data" ;
 owl:versionInfo "0.1" ;
                 void:dataDump
