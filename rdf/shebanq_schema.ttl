@@ -1,0 +1,86 @@
+@prefix     rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix     rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix     owl: <http://www.w3.org/2002/07/owl#> .
+
+@prefix   	sq: <http://purl.org/collections/shebanq/> .
+
+@prefix   	oa: <http://www.w3.org/ns/oa#>.
+@prefix     skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix     foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix       dc: <http://purl.org/dc/terms/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+
+
+##########################################################################
+#                           SCHEMA										 #
+##########################################################################
+sq:Query 
+	a rdfs:Class;
+	rdfs:subClassOf oa:Annotation;
+	rdfs:label "Query";
+	rdfs:comment "The query itself, mapped to oa:annotation".
+		
+sq:Researcher 
+	a rdfs:Class;
+	rdfs:subClassOf foaf:Person;
+	rdfs:label "Person who submitted query";
+	rdfs:comment "The query instruction, mapped to oa:annotation".
+
+sq:has_intension 
+	a rdf:Property;
+	rdfs:subPropertyOf oa:hasBody;
+	rdfs:label "has intension";
+	rdfs:comment "Intension of the query. Range is a simple literal".
+
+sq:has_extension 
+	a rdf:Property;
+	rdfs:subPropertyOf oa:hasTarget;
+	rdfs:label "has extension";
+	rdfs:comment "Extension of the query. Range is an (external) resource".
+
+ sq:has_researcher 
+ 	a rdf:Property;
+	rdfs:subPropertyOf oa:annotatedBy;
+	rdfs:label "has researcher";
+	rdfs:comment "person who made annotation".
+	
+sq:serialized_by
+	a rdf:Property; 
+	rdfs:comment "(version of) software agents";
+	rdfs:subPropertyOf oa:serializedBy.		
+# sq:made_query owl:inverseOf sq:researcher .
+
+sq:date_published 
+	a rdf:Property; 
+	rdfs:comment "moment of publishing by software = moment of serialization";
+	rdfs:subPropertyOf oa:serializedAt.
+		
+sq:has_organisation
+	a rdf:Property;
+	rdfs:label "has organisation";
+	owl:inverseOf foaf:member.
+		
+sq:has_research_question
+	a rdf:Property;
+	rdfs:label "has research question";
+	rdfs:comment "motivation for query".
+	
+sq:date_last_run
+	a rdf:Property; 
+	rdfs:label "date last run";
+	rdfs:comment "moment of last execution of query";
+	
+	
+sq:has_project
+ 	a rdf:Property; 
+	rdfs:label "associated with project";
+	rdfs:comment "project context of the query".	
+	
+sq:description
+ 	a rdf:Property; 
+	rdfs:subPropertyOf dc:description;
+	rdfs:label "description";
+	rdfs:comment "description of the query".
+	
+	
+	
