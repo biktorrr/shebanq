@@ -80,7 +80,7 @@ sq:query2
 	sq:has_extension <http://linked.ancient-data.org/shebanq/word?w=14,8,4>;
 	sq:has_researcher sq:researcher2;
 	sq:has_research_question "Can the verb שִׂים with have a double object?";
-	sq:description "This finds instances of the verb "שִׂים" (to put) with double object both in Hebrew and Aramaic, where one of the objects is encoded as a suffix on the verb, which may be a participle.";
+	sq:description "This finds instances of the verb 'שִׂים' (to put) with double object both in Hebrew and Aramaic, where one of the objects is encoded as a suffix on the verb, which may be a participle.";
 	sq:version_of_data "BHS3";
 	sq:version_of_emdros "3.4.1";
 	sq:version_of_shebanq "1.0";

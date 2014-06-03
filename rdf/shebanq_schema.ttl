@@ -68,7 +68,7 @@ sq:has_research_question
 sq:date_last_run
 	a rdf:Property; 
 	rdfs:label "date last run";
-	rdfs:comment "moment of last execution of query";
+	rdfs:comment "moment of last execution of query".
 	
 	
 sq:has_project
